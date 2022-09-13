@@ -27,4 +27,27 @@
 > cd -
 
 > litex_term /dev/ttyUSB1 --speed 115200 --kernel build/zephyr/zephyr.bin
+```
+  File "/home/muheet-ghani/.local/lib/python3.9/site-packages/serial/serialposix.py", line 322, in open
+    self.fd = os.open(self.portstr, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/ttyUSB1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/muheet-ghani/miniconda3/bin/litex_term", line 33, in <module>
+    sys.exit(load_entry_point('litex', 'console_scripts', 'litex_term')())
+  File "/home/muheet-ghani/litex/litex/tools/litex_term.py", line 641, in main
+    term.open(port, int(float(args.speed)))
+  File "/home/muheet-ghani/litex/litex/tools/litex_term.py", line 317, in open
+    self.port = serial.serial_for_url(port, baudrate)
+  File "/home/muheet-ghani/.local/lib/python3.9/site-packages/serial/__init__.py", line 90, in serial_for_url
+    instance.open()
+  File "/home/muheet-ghani/.local/lib/python3.9/site-packages/serial/serialposix.py", line 325, in open
+    raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
+serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB1: [Errno 2] No such file or directory: '/dev/ttyUSB1'
+```
+then ls /dev
+and checked ttyUSBX
+
 ![image](https://user-images.githubusercontent.com/81433387/189998772-2b754344-c72d-4991-a0af-e793d5e2d1a1.png)
