@@ -23,6 +23,8 @@
 ![image](https://user-images.githubusercontent.com/81433387/189996906-0be4d246-3184-489a-88ac-c353ff366403.png)
 
 
+![WhatsApp Image 2022-09-13 at 7 58 18 PM](https://user-images.githubusercontent.com/81433387/189998875-d47f4e4c-9efe-4c42-a431-0eb67d6e86a1.jpeg)
 > cd -
 
 > litex_term /dev/ttyUSB1 --speed 115200 --kernel build/zephyr/zephyr.bin
+![image](https://user-images.githubusercontent.com/81433387/189998772-2b754344-c72d-4991-a0af-e793d5e2d1a1.png)
