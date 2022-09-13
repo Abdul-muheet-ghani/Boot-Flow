@@ -2,7 +2,7 @@
 
 To run the ZephyrOS on the VexRiscv CPU, it is necessary to prepare the bitstream for the FPGA on a Digilent Arty A7-35 Board
 
-1. Clone the repository and update all submodules:
+### 1. Clone the repository and update all submodules:
 
 ```
 git clone https://github.com/litex-hub/zephyr-on-litex-vexriscv.git
@@ -10,14 +10,14 @@ cd zephyr-on-litex-vexriscv
 git submodule update --init --recursive
 ```
 
-2.Next, get all required packages and run the install script:
+### 2.Next, get all required packages and run the install script:
 
 ```
 apt-get install build-essential bzip2 python3 python3-dev python3-pip
 ./install.sh
 ```
 
-3. Install Migen/LiteX and the LiteX’s cores:
+### 3. Install Migen/LiteX and the LiteX’s cores:
 
 ```
 wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
@@ -25,28 +25,28 @@ chmod +x litex_setup.py
 ./litex_setup.py --init --install 
 ```
 
-4. Install the RISC-V toolchain:
+### 4. Install the RISC-V toolchain:
 
 ```
 pip3 install meson ninja
 ./litex_setup.py --gcc=riscv
 ```
 
-5. Build the Bitstream (Default for arty-a35t)
+### 5. Build the Bitstream (Default for arty-a35t)
 
 ```
 cd litex-boards/litex_boards/targets/
 ./digilent_arty.py --build --timer-uptime --csr-json csr.json
 ```
 
-6. Build the Application
+### 6. Build the Application
 
 ```
 cp csr.json /home/muheet-ghani/zephyrproject/zephyr/samples/synchronization/
 cd /home/muheet-ghani/zephyrproject/zephyr/samples/synchronization/
 ```
 
-7. Json to dts Conversion
+### 7. Json to dts Conversion
 
 ```
 ~/litex/litex/tools/litex_json2dts_zephyr.py --dts litex_vexriscv.dts --config litex_vexriscv.config csr.json
@@ -56,7 +56,7 @@ cd /home/muheet-ghani/zephyrproject/zephyr/samples/synchronization/
 
 ![image](https://user-images.githubusercontent.com/81433387/189995790-982532fb-3e4b-4125-8a1e-3dcb1fb9f8f7.png)
 
-8. Build Application
+### 8. Build Application
 
 ```
 west build -b litex_vexriscv . -DDTC_OVERLAY_FILE=litex_vexriscv.dts
@@ -66,7 +66,7 @@ west build -b litex_vexriscv . -DDTC_OVERLAY_FILE=litex_vexriscv.dts
 
 ![image](https://user-images.githubusercontent.com/81433387/189996102-9949fec2-2b52-47b0-9b36-d08f6e96bb55.png)
 
-9. Load The Bitstream 
+### 9. Load The Bitstream 
 
 ```
 cd -
@@ -81,7 +81,7 @@ cd -
 
 ![WhatsApp Image 2022-09-13 at 7 58 18 PM](https://user-images.githubusercontent.com/81433387/189998875-d47f4e4c-9efe-4c42-a431-0eb67d6e86a1.jpeg)
 
-10. Kernal Booting
+### 10. Kernal Booting
 
 ```
 cd -
