@@ -1,3 +1,5 @@
+# Zephyr on LiteX VexRiscv an example of a system on a chip (SoC)
+
 > cd litex-boards/litex_boards/targets/
 
 > ./digilent_arty.py --build --timer-uptime --csr-json csr.json
