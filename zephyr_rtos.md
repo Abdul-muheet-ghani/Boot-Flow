@@ -38,6 +38,11 @@ pip3 install meson ninja
 cd litex-boards/litex_boards/targets/
 ./digilent_arty.py --build --timer-uptime --csr-json csr.json
 ```
+> the above command is default for Arty a7-35. If u have different variant of board (a7-100t) then use
+
+```
+./digilent_arty.py --variant=a7-100 --build --timer-uptime --csr-json csr.json
+```
 
 ### 6. Build the Application
 
