@@ -116,3 +116,6 @@ serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB1: [
 > Expected Output
 
 ![image](https://user-images.githubusercontent.com/81433387/189998772-2b754344-c72d-4991-a0af-e793d5e2d1a1.png)
+
+## Refrences
+https://docs.zephyrproject.org/latest/boards/riscv/litex_vexriscv/doc/index.html
