@@ -1,6 +1,6 @@
 # Adding AWS Suport on Zephyr
 ## Board
-
+```
 zephyr-> riscv-> aws_fpga| 
                          |-> aws_fpga_deconfig
                          |-> aws_fpga.dts
@@ -8,6 +8,7 @@ zephyr-> riscv-> aws_fpga|
                          |-> board.cmake
                          |-> kconfig.board
                          |-> kconfig.deconfig
+```
 ### aws_fpga_deconfig       
 
 ```
