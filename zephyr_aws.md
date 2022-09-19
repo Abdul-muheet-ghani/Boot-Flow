@@ -48,3 +48,29 @@ this file is used only for qemu emulation like for
 ```
 west build -t run
 ```
+### kconfig.board
+Board support and SoC 
+```
+config BOARD_AWS_FPGA
+	bool "AWS RISCV32 target"
+	depends on SOC_RISCV_AWS
+	select QEMU_TARGET
+	select CPU_HAS_FPU
+	select RISCV_ISA_RV32I
+	select RISCV_ISA_EXT_ZICSR
+	select RISCV_ISA_EXT_ZIFENCEI
+```
+
+### kconfig.defconfig
+```
+config BUILD_OUTPUT_HEX
+	default y
+
+config BOARD
+	default "aws_fpga" if BOARD_AWS_FPGA
+
+# Use thread local storage by default so that
+# this feature gets more CI coverage.
+config THREAD_LOCAL_STORAGE
+	default y
+```
