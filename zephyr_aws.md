@@ -13,7 +13,7 @@ zephyr-> board-> riscv-> aws_fpga|
 
 ```
 CONFIG_SOC_SERIES_RISCV_AWS=y      #SoC Series enbling  SoC kconfig.soc kconfig.deconfig.series
-CONFIG_SOC_RISCV_AWS=y             #SoC selecting   
+CONFIG_SOC_RISCV_AWS=y             #SoC selecting kconfig.soc
 CONFIG_BOARD_AWS_FPGA=y            #Board
 CONFIG_CONSOLE=y
 CONFIG_SERIAL=y
