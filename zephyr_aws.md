@@ -1,18 +1,18 @@
 # Adding AWS Suport on Zephyr
 ## Board
 ```
-zephyr-> riscv-> aws_fpga| 
-                         |-> aws_fpga_deconfig
-                         |-> aws_fpga.dts
-                         |-> aws_fpga.yml
-                         |-> board.cmake
-                         |-> kconfig.board
-                         |-> kconfig.deconfig
+zephyr-> board-> riscv-> aws_fpga| 
+                 	         |-> aws_fpga_deconfig
+                         	 |-> aws_fpga.dts
+                         	 |-> aws_fpga.yml
+                      	 	 |-> board.cmake
+                         	 |-> kconfig.board
+                         	 |-> kconfig.deconfig
 ```
 ### aws_fpga_deconfig       
 
 ```
-CONFIG_SOC_SERIES_RISCV_AWS=y      #SoC Series enbling
+CONFIG_SOC_SERIES_RISCV_AWS=y      #SoC Series enbling  SoC kconfig.soc kconfig.deconfig.series
 CONFIG_SOC_RISCV_AWS=y             #SoC selecting   
 CONFIG_BOARD_AWS_FPGA=y            #Board
 CONFIG_CONSOLE=y
@@ -73,4 +73,48 @@ config BOARD
 # this feature gets more CI coverage.
 config THREAD_LOCAL_STORAGE
 	default y
+```
+## SoC
+
+```
+zephyr-> SoC-> riscv-> riscv-privilege-> aws| 
+                 	         	    |-> soc.c
+                         	            |-> soc.h
+                      	 	 	    |-> CMakeList.txt
+					    |-> linker.ld
+					    |-> kconfig.soc
+                         	 	    |-> kconfig.series
+                         	 	    |-> kconfig.deconfig.series
+```
+### kconfig.deconfig.series
+```
+if SOC_SERIES_RISCV_AWS    #
+
+config SOC_SERIES
+	default "aws"      #SoS path
+
+```
+### kconfig.series
+```
+config SOC_SERIES_RISCV_AWS
+	bool "QEMU RISC-V VirtIO Board"
+	select RISCV
+	select SOC_FAMILY_RISCV_PRIVILEGE
+```
+### kconfig.soc 
+
+```
+choice
+	prompt "QEMU RISC-V VirtIO Board"
+	depends on SOC_SERIES_RISCV_AWS
+
+config SOC_RISCV_AWS
+	bool "QEMU RISC-V VirtIO Board"
+	select ATOMIC_OPERATIONS_BUILTIN
+	select INCLUDE_RESET_VECTOR
+	select RISCV_ISA_EXT_M
+	select RISCV_ISA_EXT_A
+	select RISCV_ISA_EXT_C
+
+endchoice
 ```
