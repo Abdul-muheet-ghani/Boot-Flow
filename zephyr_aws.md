@@ -42,3 +42,9 @@ selecting the specific part
 	status = "okay";
 };
 ```
+
+### board.cmake 
+this file is used only for qemu emulation like for
+```
+west build -t run
+```
