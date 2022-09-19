@@ -118,3 +118,4 @@ config SOC_RISCV_AWS
 
 endchoice
 ```
+kernel-> banner.c having printk property
