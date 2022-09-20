@@ -118,9 +118,13 @@ config SOC_RISCV_AWS
 
 endchoice
 ```
+## Application Printk
+
 kernel-> banner.c having printk property
 
-## Adding Xilnx UART Driver
+
+## DTSi
+### Adding Xilnx UART Driver
 
 ```
 		uartlite0: uartlite@40100000 {
@@ -131,5 +135,7 @@ kernel-> banner.c having printk property
 
 compatible = "xlnx,xps-uartlite-1.00.a"
 zephyr-> dts-> bindings-> serial-> xlnx,xps-uartlite-1.00.a.yml
+
+## Driver
 
 zephyr-> drivers-> serial-> uart_xlnx_uartlite.c          ->              #define DT_DRV_COMPAT `xlnx_xps_uartlite_1_00_a`
