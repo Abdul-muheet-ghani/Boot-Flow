@@ -15,9 +15,9 @@ zephyr-> board-> riscv-> aws_fpga|
 CONFIG_SOC_SERIES_RISCV_AWS=y      #SoC Series enbling  SoC kconfig.soc kconfig.deconfig.series
 CONFIG_SOC_RISCV_AWS=y             #SoC selecting kconfig.soc
 CONFIG_BOARD_AWS_FPGA=y            #Board
-CONFIG_CONSOLE=y
+CONFIG_CONSOLE=y	           #-> driver-> CMakeList.txt-> console-> 
 CONFIG_SERIAL=y
-CONFIG_UART_CONSOLE=y
+CONFIG_UART_CONSOLE=y              #-> add uart_console.c
 CONFIG_UART_XLNX_UARTLITE=y        #enble xilinx uart driver
 CONFIG_STACK_SENTINEL=y
 CONFIG_QEMU_ICOUNT_SHIFT=6
