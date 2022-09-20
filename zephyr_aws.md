@@ -131,4 +131,5 @@ kernel-> banner.c having printk property
 
 compatible = "xlnx,xps-uartlite-1.00.a"
 zephyr-> dts-> bindings-> serial-> xlnx,xps-uartlite-1.00.a.yml
+
 zephyr-> drivers-> serial-> uart_xlnx_uartlite.c          ->              #define DT_DRV_COMPAT `xlnx_xps_uartlite_1_00_a`
