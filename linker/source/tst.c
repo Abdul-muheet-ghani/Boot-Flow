@@ -4,5 +4,5 @@ int mult() {
 }
 
 int main() {
-        print("as");
+        mult();
 }
