@@ -34,5 +34,20 @@ then next stage is code generation where *.i* is converted into *.s* which is ou
 
   riscv32-unknown-elf-objdump -d tst
   dissassmble it
+
+  riscv64-unknown-elf-objdump -h c_test.o
+  shows the different section of .o file
+
+  riscv64-unknown-elf-objdump -d c_test.o > c_test_log
+  dump assembly into new file
+
+  riscv64-unknown-elf-gcc -nostartfiles -nostdlib -T linker.ld tst.o -o tst.elf
+  use for not startup file
+
+  riscv64-unknown-elf-objdump -D tst.elf > tst.dis
+  dissassemble
+
+  riscv64-unknown-elf-gcc -g -c tst.c -o tst.o
+  for non linking compiling
 ```
 
