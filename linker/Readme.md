@@ -49,5 +49,25 @@ then next stage is code generation where *.i* is converted into *.s* which is ou
 
   riscv64-unknown-elf-gcc -g -c tst.c -o tst.o
   for non linking compiling
+
+  riscv64-unknown-elf-gcc -g -march=rv64ifd -mabi=lp64 -c tst.c -o tst.o
+  in which no floating-point arguments will be passed in registers.
+  https://gcc.gnu.org/onlinedocs/gcc/RISC-V-Options.html
+  https://www.sifive.com/blog/all-aboard-part-1-compiler-args
+
+  riscv64-unknown-elf-gcc -g -march=rv64ifd -mabi=lp64 -Wl,-Ttext-segment,0x80000000 -c tst.c -o tst.o
+  Moving the text section with -Wl,-Ttext-segment,0x80000000  
+
+  riscv64-unknown-elf-gcc -g -march=rv64ifd -mabi=lp64 -Wl,-Ttext-segment,0x80000000 --save-temps -c tst.c -o tst.o
+  --save-temps for .i .s .o and hex
+  relocation.i: The preprocessed source, which expands any preprocessor directives (things like #include or #ifdef).
+  relocation.s: The output of the actual compiler, which is an assembly file (a text file in the RISC-V assembly format).
+  relocation.o: The output of the assembler, which is an un-linked object file (an ELF file, but not an executable ELF).
+  relocation: The output of the linker, which is a linked executable (an executable ELF file).
+
+
+  riscv64-unknown-elf-objdump -d -r tst.o > tst.sec
+  section definition
+
 ```
 
