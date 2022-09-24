@@ -1,9 +1,8 @@
-ENTRY(_start)
 PROVIDE( __stack_top = ORIGIN(BRAM) + LENGTH(BRAM));
 MEMORY
 {
-    DDR(rx):ORIGIN =0x80000000,LENGTH =4K
-    BRAM(rwx):ORIGIN =0x8C000000,LENGTH =4K
+    DDR(rx):ORIGIN =0x8C000000,LENGTH =4k
+    BRAM(rwx):ORIGIN =0x00000000,LENGTH =4k
 }
 
 SECTIONS
@@ -22,5 +21,10 @@ SECTIONS
     .bss :
     {
         *(.bss)
-    }> BRAM
+    }> DDR
+
+    .sbss :
+    {
+        *(.sbss)
+    }> DDR
 }
