@@ -1,0 +1,57 @@
+
+tst.elf:     file format elf64-littleriscv
+
+SYMBOL TABLE:
+00000000000100e8 l    d  .text	0000000000000000 .text
+0000000000011144 l    d  .sbss	0000000000000000 .sbss
+0000000000000000 l    d  .comment	0000000000000000 .comment
+0000000000000000 l    d  .riscv.attributes	0000000000000000 .riscv.attributes
+0000000000000000 l    d  .debug_aranges	0000000000000000 .debug_aranges
+0000000000000000 l    d  .debug_info	0000000000000000 .debug_info
+0000000000000000 l    d  .debug_abbrev	0000000000000000 .debug_abbrev
+0000000000000000 l    d  .debug_line	0000000000000000 .debug_line
+0000000000000000 l    d  .debug_frame	0000000000000000 .debug_frame
+0000000000000000 l    d  .debug_str	0000000000000000 .debug_str
+0000000000000000 l    d  .debug_line_str	0000000000000000 .debug_line_str
+0000000000000000 l    df *ABS*	0000000000000000 tst.c
+0000000000011944 g       *ABS*	0000000000000000 __global_pointer$
+0000000000011148 g     O .sbss	0000000000000004 b
+0000000000011144 g       .text	0000000000000000 __SDATA_BEGIN__
+0000000000000000         *UND*	0000000000000000 _start
+000000000001114c g     O .sbss	0000000000000004 c
+0000000000011150 g       .sbss	0000000000000000 __BSS_END__
+0000000000011144 g       .sbss	0000000000000000 __bss_start
+00000000000100e8 g     F .text	000000000000005c main
+0000000000011144 g       .text	0000000000000000 __DATA_BEGIN__
+0000000000011144 g       .text	0000000000000000 _edata
+0000000000011150 g       .sbss	0000000000000000 _end
+0000000000011144 g     O .sbss	0000000000000004 a
+
+
+
+Disassembly of section .text:
+
+00000000000100e8 <main>:
+   100e8:	ff010113          	addi	sp,sp,-16
+   100ec:	00813423          	sd	s0,8(sp)
+   100f0:	01010413          	addi	s0,sp,16
+   100f4:	000117b7          	lui	a5,0x11
+   100f8:	00a00713          	li	a4,10
+   100fc:	14e7a223          	sw	a4,324(a5) # 11144 <__DATA_BEGIN__>
+   10100:	000117b7          	lui	a5,0x11
+   10104:	00200713          	li	a4,2
+   10108:	14e7a423          	sw	a4,328(a5) # 11148 <b>
+   1010c:	000117b7          	lui	a5,0x11
+   10110:	1447a703          	lw	a4,324(a5) # 11144 <__DATA_BEGIN__>
+   10114:	000117b7          	lui	a5,0x11
+   10118:	1487a783          	lw	a5,328(a5) # 11148 <b>
+   1011c:	00f707bb          	addw	a5,a4,a5
+   10120:	0007871b          	sext.w	a4,a5
+   10124:	000117b7          	lui	a5,0x11
+   10128:	14e7a623          	sw	a4,332(a5) # 1114c <c>
+   1012c:	000117b7          	lui	a5,0x11
+   10130:	14c7a783          	lw	a5,332(a5) # 1114c <c>
+   10134:	00078513          	mv	a0,a5
+   10138:	00813403          	ld	s0,8(sp)
+   1013c:	01010113          	addi	sp,sp,16
+   10140:	00008067          	ret
