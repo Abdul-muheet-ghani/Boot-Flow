@@ -1,0 +1,64 @@
+
+tst.elf:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	1101                	addi	sp,sp,-32
+   2:	ec22                	sd	s0,24(sp)
+   4:	1000                	addi	s0,sp,32
+   6:	47a9                	li	a5,10
+   8:	fef42623          	sw	a5,-20(s0)
+   c:	4789                	li	a5,2
+   e:	fef42423          	sw	a5,-24(s0)
+  12:	fec42783          	lw	a5,-20(s0)
+  16:	873e                	mv	a4,a5
+  18:	fe842783          	lw	a5,-24(s0)
+  1c:	9fb9                	addw	a5,a5,a4
+  1e:	fef42223          	sw	a5,-28(s0)
+  22:	fe442783          	lw	a5,-28(s0)
+  26:	853e                	mv	a0,a5
+  28:	6462                	ld	s0,24(sp)
+  2a:	6105                	addi	sp,sp,32
+  2c:	8082                	ret
+
+Disassembly of section .comment:
+
+0000000000000000 <.comment>:
+   0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
+   4:	2820                	fld	fs0,80(s0)
+   6:	61653167          	.4byte	0x61653167
+   a:	3739                	addiw	a4,a4,-18
+   c:	6538                	ld	a4,72(a0)
+   e:	36363033          	.4byte	0x36363033
+  12:	2029                	.2byte	0x2029
+  14:	3231                	addiw	tp,tp,-20 # ffffffffffffffec <main+0xffffffffffffffec>
+  16:	312e                	fld	ft2,232(sp)
+  18:	302e                	fld	ft0,232(sp)
+	...
+
+Disassembly of section .riscv.attributes:
+
+0000000000000000 <.riscv.attributes>:
+   0:	3441                	addiw	s0,s0,-16
+   2:	0000                	unimp
+   4:	7200                	ld	s0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   c:	002a                	c.slli	zero,0xa
+   e:	0000                	unimp
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3676                	fld	fa2,376(sp)
+  16:	6934                	ld	a3,80(a0)
+  18:	7032                	.2byte	0x7032
+  1a:	5f30                	lw	a2,120(a4)
+  1c:	326d                	addiw	tp,tp,-5 # fffffffffffe0ffb <main+0xfffffffffffe0ffb>
+  1e:	3070                	fld	fa2,224(s0)
+  20:	615f 7032 5f30      	.byte	0x5f, 0x61, 0x32, 0x70, 0x30, 0x5f
+  26:	3266                	fld	ft4,120(sp)
+  28:	3070                	fld	fa2,224(s0)
+  2a:	645f 7032 5f30      	.byte	0x5f, 0x64, 0x32, 0x70, 0x30, 0x5f
+  30:	30703263          	.4byte	0x30703263
+	...
