@@ -1,0 +1,62 @@
+
+exm.elf:     file format elf64-littleriscv
+
+SYMBOL TABLE:
+000000008c000000 l    d  .text	0000000000000000 .text
+0000000000000000 l    d  .comment	0000000000000000 .comment
+0000000000000000 l    d  .riscv.attributes	0000000000000000 .riscv.attributes
+0000000000000000 l    df *ABS*	0000000000000000 exm.c
+000000008c000000 g     F .text	00000000000000bc main
+
+
+
+Disassembly of section .text:
+
+000000008c000000 <main>:
+    8c000000:	fa010113          	addi	sp,sp,-96
+    8c000004:	04813c23          	sd	s0,88(sp)
+    8c000008:	06010413          	addi	s0,sp,96
+    8c00000c:	6f6c67b7          	lui	a5,0x6f6c6
+    8c000010:	56878793          	addi	a5,a5,1384 # 6f6c6568 <main-0x1c939a98>
+    8c000014:	faf43023          	sd	a5,-96(s0)
+    8c000018:	fa043423          	sd	zero,-88(s0)
+    8c00001c:	fa043823          	sd	zero,-80(s0)
+    8c000020:	fa043c23          	sd	zero,-72(s0)
+    8c000024:	fc043023          	sd	zero,-64(s0)
+    8c000028:	fc043423          	sd	zero,-56(s0)
+    8c00002c:	fc043823          	sd	zero,-48(s0)
+    8c000030:	fc043c23          	sd	zero,-40(s0)
+    8c000034:	fe043023          	sd	zero,-32(s0)
+    8c000038:	fe043423          	sd	zero,-24(s0)
+    8c00003c:	fa040713          	addi	a4,s0,-96
+    8c000040:	01100793          	li	a5,17
+    8c000044:	01b79793          	slli	a5,a5,0x1b
+    8c000048:	0007071b          	sext.w	a4,a4
+    8c00004c:	00e7a023          	sw	a4,0(a5)
+    8c000050:	02300793          	li	a5,35
+    8c000054:	01a79793          	slli	a5,a5,0x1a
+    8c000058:	00a00713          	li	a4,10
+    8c00005c:	00e7a023          	sw	a4,0(a5)
+    8c000060:	02300793          	li	a5,35
+    8c000064:	01a79793          	slli	a5,a5,0x1a
+    8c000068:	00478793          	addi	a5,a5,4
+    8c00006c:	00200713          	li	a4,2
+    8c000070:	00e7a023          	sw	a4,0(a5)
+    8c000074:	02300793          	li	a5,35
+    8c000078:	01a79793          	slli	a5,a5,0x1a
+    8c00007c:	00478793          	addi	a5,a5,4
+    8c000080:	0007a683          	lw	a3,0(a5)
+    8c000084:	02300793          	li	a5,35
+    8c000088:	01a79793          	slli	a5,a5,0x1a
+    8c00008c:	0007a703          	lw	a4,0(a5)
+    8c000090:	02300793          	li	a5,35
+    8c000094:	01a79793          	slli	a5,a5,0x1a
+    8c000098:	00878793          	addi	a5,a5,8
+    8c00009c:	00e6873b          	addw	a4,a3,a4
+    8c0000a0:	0007071b          	sext.w	a4,a4
+    8c0000a4:	00e7a023          	sw	a4,0(a5)
+    8c0000a8:	00000793          	li	a5,0
+    8c0000ac:	00078513          	mv	a0,a5
+    8c0000b0:	05813403          	ld	s0,88(sp)
+    8c0000b4:	06010113          	addi	sp,sp,96
+    8c0000b8:	00008067          	ret
