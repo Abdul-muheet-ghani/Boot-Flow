@@ -1,0 +1,60 @@
+
+../build_os/main.elf:     file format elf64-littleriscv
+
+SYMBOL TABLE:
+0000000000000000 l    d  .text	0000000000000000 .text
+0000000000000000 l    d  .comment	0000000000000000 .comment
+0000000000000000 l    d  .riscv.attributes	0000000000000000 .riscv.attributes
+0000000000000000 l    df *ABS*	0000000000000000 main.c
+0000000000000000 g     F .text	00000000000000b0 main
+0000000000000000         *UND*	0000000000000000 start
+
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	fb010113          	addi	sp,sp,-80
+   4:	04813423          	sd	s0,72(sp)
+   8:	05010413          	addi	s0,sp,80
+   c:	000067b7          	lui	a5,0x6
+  10:	56878793          	addi	a5,a5,1384 # 6568 <main+0x6568>
+  14:	faf43c23          	sd	a5,-72(s0)
+  18:	fc043023          	sd	zero,-64(s0)
+  1c:	fc043423          	sd	zero,-56(s0)
+  20:	fc043823          	sd	zero,-48(s0)
+  24:	fc043c23          	sd	zero,-40(s0)
+  28:	fe043023          	sd	zero,-32(s0)
+  2c:	fe041423          	sh	zero,-24(s0)
+  30:	fb840713          	addi	a4,s0,-72
+  34:	01100793          	li	a5,17
+  38:	01b79793          	slli	a5,a5,0x1b
+  3c:	0007071b          	sext.w	a4,a4
+  40:	00e7a023          	sw	a4,0(a5)
+  44:	02300793          	li	a5,35
+  48:	01a79793          	slli	a5,a5,0x1a
+  4c:	00a00713          	li	a4,10
+  50:	00e7a023          	sw	a4,0(a5)
+  54:	02300793          	li	a5,35
+  58:	01a79793          	slli	a5,a5,0x1a
+  5c:	00478793          	addi	a5,a5,4
+  60:	00200713          	li	a4,2
+  64:	00e7a023          	sw	a4,0(a5)
+  68:	02300793          	li	a5,35
+  6c:	01a79793          	slli	a5,a5,0x1a
+  70:	00478793          	addi	a5,a5,4
+  74:	0007a683          	lw	a3,0(a5)
+  78:	02300793          	li	a5,35
+  7c:	01a79793          	slli	a5,a5,0x1a
+  80:	0007a703          	lw	a4,0(a5)
+  84:	02300793          	li	a5,35
+  88:	01a79793          	slli	a5,a5,0x1a
+  8c:	00878793          	addi	a5,a5,8
+  90:	00e6873b          	addw	a4,a3,a4
+  94:	0007071b          	sext.w	a4,a4
+  98:	00e7a023          	sw	a4,0(a5)
+  9c:	00000793          	li	a5,0
+  a0:	00078513          	mv	a0,a5
+  a4:	04813403          	ld	s0,72(sp)
+  a8:	05010113          	addi	sp,sp,80
+  ac:	00008067          	ret
