@@ -18,7 +18,7 @@ build_OS:
 	cd ../build_os && \
 	riscv64-unknown-elf-gcc -c -I ../src/intf/ -march=rv64i -mabi=lp64 $(source_file) -o $(object_file) && \
 	riscv64-unknown-elf-gcc -c -I ../src/intf/ -march=rv64i -mabi=lp64 $(source_int_file) -o $(int_object_file) && \
-	riscv64-unknown-elf-gcc -nostartfiles -nostdlib -T ../target/riscv/linker.ld $(riscv_object_file) -o $(elf_file) && \
+	riscv64-unknown-elf-gcc -nostartfiles -nostdlib -T ../target/riscv/linker.ld $(object_file) $(int_object_file) -o $(elf_file) && \
 	riscv64-unknown-elf-objdump -d -t -r $(elf_file) > $(assemble_file) && \
 	riscv64-unknown-elf-objcopy -O verilog $(elf_file) $(verilog_hex)
 
