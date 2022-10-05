@@ -13,6 +13,6 @@ int kernel_main() {
     a=10;
     b=2;
     c = b+a;
-    print_str("a");
+    print_str("abc");
     return 0;
 }
