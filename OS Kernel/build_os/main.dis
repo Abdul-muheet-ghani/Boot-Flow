@@ -3,58 +3,111 @@
 
 SYMBOL TABLE:
 0000000000000000 l    d  .text	0000000000000000 .text
-00000000000000a0 l    d  .sdata	0000000000000000 .sdata
+0000000000000160 l    d  .rodata	0000000000000000 .rodata
+0000000000000168 l    d  .sdata	0000000000000000 .sdata
 0000000000000000 l    d  .comment	0000000000000000 .comment
 0000000000000000 l    d  .riscv.attributes	0000000000000000 .riscv.attributes
+0000000000000000 l    df *ABS*	0000000000000000 main.c
 0000000000000000 l    df *ABS*	0000000000000000 print.c
-0000000000000000 g     F .text	0000000000000034 print_char
-0000000000000034 g     F .text	0000000000000068 print_str
-00000000000000a0 g     O .sdata	0000000000000008 buffer
+00000000000000c0 g     F .text	0000000000000034 print_char
+00000000000000f4 g     F .text	0000000000000068 print_str
+0000000000000000 g     F .text	00000000000000c0 kernel_main
+0000000000000168 g     O .sdata	0000000000000008 buffer
 0000000000000000         *UND*	0000000000000000 start
 
 
 
 Disassembly of section .text:
 
-0000000000000000 <print_char>:
-   0:	fe010113          	addi	sp,sp,-32
-   4:	00813c23          	sd	s0,24(sp)
-   8:	02010413          	addi	s0,sp,32
-   c:	00050793          	mv	a5,a0
-  10:	fef407a3          	sb	a5,-17(s0)
-  14:	0a003783          	ld	a5,160(zero) # a0 <buffer>
-  18:	06478793          	addi	a5,a5,100
-  1c:	fef44703          	lbu	a4,-17(s0)
-  20:	00e78023          	sb	a4,0(a5)
-  24:	00000013          	nop
-  28:	01813403          	ld	s0,24(sp)
-  2c:	02010113          	addi	sp,sp,32
-  30:	00008067          	ret
+0000000000000000 <kernel_main>:
+   0:	fb010113          	addi	sp,sp,-80
+   4:	04113423          	sd	ra,72(sp)
+   8:	04813023          	sd	s0,64(sp)
+   c:	05010413          	addi	s0,sp,80
+  10:	000067b7          	lui	a5,0x6
+  14:	56878793          	addi	a5,a5,1384 # 6568 <buffer+0x6400>
+  18:	faf43c23          	sd	a5,-72(s0)
+  1c:	fc043023          	sd	zero,-64(s0)
+  20:	fc043423          	sd	zero,-56(s0)
+  24:	fc043823          	sd	zero,-48(s0)
+  28:	fc043c23          	sd	zero,-40(s0)
+  2c:	fe043023          	sd	zero,-32(s0)
+  30:	fe041423          	sh	zero,-24(s0)
+  34:	fb840713          	addi	a4,s0,-72
+  38:	01100793          	li	a5,17
+  3c:	01b79793          	slli	a5,a5,0x1b
+  40:	0007071b          	sext.w	a4,a4
+  44:	00e7a023          	sw	a4,0(a5)
+  48:	02300793          	li	a5,35
+  4c:	01a79793          	slli	a5,a5,0x1a
+  50:	00a00713          	li	a4,10
+  54:	00e7a023          	sw	a4,0(a5)
+  58:	02300793          	li	a5,35
+  5c:	01a79793          	slli	a5,a5,0x1a
+  60:	00478793          	addi	a5,a5,4
+  64:	00200713          	li	a4,2
+  68:	00e7a023          	sw	a4,0(a5)
+  6c:	02300793          	li	a5,35
+  70:	01a79793          	slli	a5,a5,0x1a
+  74:	00478793          	addi	a5,a5,4
+  78:	0007a683          	lw	a3,0(a5)
+  7c:	02300793          	li	a5,35
+  80:	01a79793          	slli	a5,a5,0x1a
+  84:	0007a703          	lw	a4,0(a5)
+  88:	02300793          	li	a5,35
+  8c:	01a79793          	slli	a5,a5,0x1a
+  90:	00878793          	addi	a5,a5,8
+  94:	00e6873b          	addw	a4,a3,a4
+  98:	0007071b          	sext.w	a4,a4
+  9c:	00e7a023          	sw	a4,0(a5)
+  a0:	16000513          	li	a0,352
+  a4:	050000ef          	jal	ra,f4 <print_str>
+  a8:	00000793          	li	a5,0
+  ac:	00078513          	mv	a0,a5
+  b0:	04813083          	ld	ra,72(sp)
+  b4:	04013403          	ld	s0,64(sp)
+  b8:	05010113          	addi	sp,sp,80
+  bc:	00008067          	ret
 
-0000000000000034 <print_str>:
-  34:	fd010113          	addi	sp,sp,-48
-  38:	02113423          	sd	ra,40(sp)
-  3c:	02813023          	sd	s0,32(sp)
-  40:	03010413          	addi	s0,sp,48
-  44:	fca43c23          	sd	a0,-40(s0)
-  48:	fe043423          	sd	zero,-24(s0)
-  4c:	fd843703          	ld	a4,-40(s0)
-  50:	fe843783          	ld	a5,-24(s0)
-  54:	00f707b3          	add	a5,a4,a5
-  58:	0007c783          	lbu	a5,0(a5)
-  5c:	fef403a3          	sb	a5,-25(s0)
-  60:	fe744783          	lbu	a5,-25(s0)
-  64:	0ff7f793          	zext.b	a5,a5
-  68:	02078063          	beqz	a5,88 <print_str+0x54>
-  6c:	fe744783          	lbu	a5,-25(s0)
-  70:	00078513          	mv	a0,a5
-  74:	f8dff0ef          	jal	ra,0 <print_char>
-  78:	fe843783          	ld	a5,-24(s0)
-  7c:	00178793          	addi	a5,a5,1
-  80:	fef43423          	sd	a5,-24(s0)
-  84:	fc9ff06f          	j	4c <print_str+0x18>
-  88:	00000013          	nop
-  8c:	02813083          	ld	ra,40(sp)
-  90:	02013403          	ld	s0,32(sp)
-  94:	03010113          	addi	sp,sp,48
-  98:	00008067          	ret
+00000000000000c0 <print_char>:
+  c0:	fe010113          	addi	sp,sp,-32
+  c4:	00813c23          	sd	s0,24(sp)
+  c8:	02010413          	addi	s0,sp,32
+  cc:	00050793          	mv	a5,a0
+  d0:	fef407a3          	sb	a5,-17(s0)
+  d4:	16803783          	ld	a5,360(zero) # 168 <buffer>
+  d8:	06478793          	addi	a5,a5,100
+  dc:	fef44703          	lbu	a4,-17(s0)
+  e0:	00e78023          	sb	a4,0(a5)
+  e4:	00000013          	nop
+  e8:	01813403          	ld	s0,24(sp)
+  ec:	02010113          	addi	sp,sp,32
+  f0:	00008067          	ret
+
+00000000000000f4 <print_str>:
+  f4:	fd010113          	addi	sp,sp,-48
+  f8:	02113423          	sd	ra,40(sp)
+  fc:	02813023          	sd	s0,32(sp)
+ 100:	03010413          	addi	s0,sp,48
+ 104:	fca43c23          	sd	a0,-40(s0)
+ 108:	fe043423          	sd	zero,-24(s0)
+ 10c:	fd843703          	ld	a4,-40(s0)
+ 110:	fe843783          	ld	a5,-24(s0)
+ 114:	00f707b3          	add	a5,a4,a5
+ 118:	0007c783          	lbu	a5,0(a5)
+ 11c:	fef403a3          	sb	a5,-25(s0)
+ 120:	fe744783          	lbu	a5,-25(s0)
+ 124:	0ff7f793          	zext.b	a5,a5
+ 128:	02078063          	beqz	a5,148 <print_str+0x54>
+ 12c:	fe744783          	lbu	a5,-25(s0)
+ 130:	00078513          	mv	a0,a5
+ 134:	f8dff0ef          	jal	ra,c0 <print_char>
+ 138:	fe843783          	ld	a5,-24(s0)
+ 13c:	00178793          	addi	a5,a5,1
+ 140:	fef43423          	sd	a5,-24(s0)
+ 144:	fc9ff06f          	j	10c <print_str+0x18>
+ 148:	00000013          	nop
+ 14c:	02813083          	ld	ra,40(sp)
+ 150:	02013403          	ld	s0,32(sp)
+ 154:	03010113          	addi	sp,sp,48
+ 158:	00008067          	ret
